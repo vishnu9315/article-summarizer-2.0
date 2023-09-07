@@ -41,6 +41,13 @@ const Demo = () => {
     setTimeout(() => setCopied(false), 3000);
   };
 
+  const handleClick = (indexToRemove) => {
+    const updatedArticles = allArticles.filter((_, index) => index !== indexToRemove);
+    setAllArticles(updatedArticles);
+    localStorage.setItem("articles", JSON.stringify(updatedArticles));
+  };
+  
+
   return (
     <section className='mt-16 w-full max-w-xl'>
       <div className='flex flex-col w-full gap-2'>
@@ -82,10 +89,12 @@ const Demo = () => {
                 alt={copied === item.url ? "tick_icon" : "copy_icon"}
                 className='w-[40%] h-[40%] object-contain'
               />
+             
             </div>
             <p className='flex-1 font-satoshi text-blue-700 font-medium text-sm truncate'>
               {item.url}
             </p>
+            <p onClick={() => handleClick(index)}>X</p>
           </div>
         ))}
       </div>
