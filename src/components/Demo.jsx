@@ -43,7 +43,9 @@ const Demo = () => {
 
   const handleClick = (indexToRemove) => {
     const updatedArticles = allArticles.filter((_, index) => index !== indexToRemove);
+    //updating all articles
     setAllArticles(updatedArticles);
+    //storing it to the localStorage as well
     localStorage.setItem("articles", JSON.stringify(updatedArticles));
   };
   
@@ -117,4 +119,3 @@ const Demo = () => {
 };
 
 export default Demo;
-//test
